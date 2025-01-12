@@ -19,15 +19,15 @@ with open("oldNumbers.json", "w") as outfile:
 print("Welcome to the Random Number picker by joejoeVT, designed for karaoke challenges")
 cprint("In case the script ever deletes json data. all data has been backed up to oldNumbers.json. DO NOT RUN THE SCRIPT AGAIN BEFORE VERIFYING THE ORIGINAL JSON FILE!", "light_yellow", attrs=['bold'])
 if debugKaraokeMode == True:
-    cprint("Debugging enabled!")
-    print(f"Amount to randomize: {randomWhileAmount}")
-    print(f"loaded JSON Data\n{loadedNumberListData}")
+    cprint("Debugging enabled!", "light_yellow", attrs=['bold'])
+    cprint(f"Amount to randomize: {randomWhileAmount}", "blue")
+    cprint(f"loaded JSON Data\n{loadedNumberListData}", "blue")
 
 while (i < randomWhileAmount):
     i += 1
     selectedNumber = random.choice(loadedNumberListData)
     if debugKaraokeMode == True:
-        print(f"While loop has run {i}/{randomWhileAmount} times and has selected {selectedNumber}")
+        cprint(f"While loop has run {i}/{randomWhileAmount} times and has selected {selectedNumber}", "blue")
 
 root = Tk()
 root.withdraw()
