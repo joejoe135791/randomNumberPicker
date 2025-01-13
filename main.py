@@ -6,18 +6,19 @@ from tkinter import *
 from tkinter import messagebox 
 from termcolor import cprint
 
-debugKaraokeMode = True
+loadedConfigJson = json.load(open("config.json"))
+debugKaraokeMode = loadedConfigJson['debugMode']
 i = 0
 os.system('color')
-loadedNumberJson = json.load(open("numbers.json"))
-loadedNumberListData = loadedNumberJson["numbers"]
+loadedNumberJson = json.load(open("data.json"))
+loadedNumberListData = loadedNumberJson["data"]
 randomWhileAmount = random.randint(1, 25)
 # Backup old data just in case
-with open("oldNumbers.json", "w") as outfile:
+with open("oldata.json", "w") as outfile:
     json.dump(loadedNumberJson, outfile, indent=4, sort_keys=True)
 
-print("Welcome to the Random Number picker by joejoeVT, designed for karaoke challenges")
-cprint("In case the script ever deletes json data. all data has been backed up to oldNumbers.json. DO NOT RUN THE SCRIPT AGAIN BEFORE VERIFYING THE ORIGINAL JSON FILE!", "light_yellow", attrs=['bold'])
+print("Welcome to the random data picker by joejoe, designed for karaoke challenges, numbers, names and whatever you want to use it for")
+cprint("In case the script ever deletes json data. all data has been backed up to oldData.json. DO NOT RUN THE SCRIPT AGAIN BEFORE VERIFYING THE ORIGINAL JSON FILE!", "light_yellow", attrs=['bold'])
 if debugKaraokeMode == True:
     cprint("Debugging enabled!", "light_yellow", attrs=['bold'])
     cprint(f"Amount to randomize: {randomWhileAmount}", "blue")
@@ -32,12 +33,11 @@ while (i < randomWhileAmount):
 root = Tk()
 root.withdraw()
 root.geometry("300x200")
-  
-messagebox.showinfo(f"Selected Number {selectedNumber}", f"Selected Number: {selectedNumber}") 
+messagebox.showinfo(f"Selected {selectedNumber}", f"Selected: {selectedNumber}.\nClose this window to remove from list") 
 print(f"Selected number {selectedNumber}")
 
 removedNumberList = loadedNumberListData.remove(selectedNumber)
-newJsonData = dict(numbers = removedNumberList)
-with open("numbers.json", "w") as outfile:
+newJsonData = dict(data = removedNumberList)
+with open("data.json", "w") as outfile:
     json.dump(loadedNumberJson, outfile, indent=4, sort_keys=True)
 print(f"{selectedNumber} has been removed from list")
