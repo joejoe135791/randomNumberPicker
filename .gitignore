@@ -1,2 +1,6 @@
 oldNumbers.json
+oldData.json
 numbers backup.json
+*.spec
+compiledexe/
+build/

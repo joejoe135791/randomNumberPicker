@@ -23,6 +23,9 @@ if debugKaraokeMode == True:
     cprint("Debugging enabled!", "light_yellow", attrs=['bold'])
     cprint(f"Amount to randomize: {randomWhileAmount}", "blue")
     cprint(f"loaded JSON Data\n{loadedNumberListData}", "blue")
+    input("Press any button to continue")
+else:
+    pass
 
 while (i < randomWhileAmount):
     i += 1
@@ -33,7 +36,7 @@ while (i < randomWhileAmount):
 root = Tk()
 root.withdraw()
 root.geometry("300x200")
-messagebox.showinfo(f"Selected {selectedNumber}", f"Selected: {selectedNumber}.\nClose this window to remove from list") 
+messagebox.showinfo(f"Selected {selectedNumber}", f"Selected: {selectedNumber}.\npress ok to remove {selectedNumber} from list") 
 print(f"Selected number {selectedNumber}")
 
 removedNumberList = loadedNumberListData.remove(selectedNumber)
