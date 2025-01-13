@@ -11,4 +11,4 @@ I don't plan to support this project in the future however I *MAY* add support f
 This project comes with no support from me as it is a personal project
 
 # License
-This project is licensed under the [GNU GENERAL PUBLIC LICENSE Version 3](./LICENSE). Read LICENSE for more information
+This project is licensed under the [GPL-3.0 License](./LICENSE). Read LICENSE for more information
