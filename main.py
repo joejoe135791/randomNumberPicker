@@ -9,11 +9,13 @@ from termcolor import cprint
 loadedConfigJson = json.load(open("config.json"))
 debugKaraokeMode = loadedConfigJson['debugMode']
 versionNumber = loadedConfigJson['version']
+minRandomAmount = loadedConfigJson['minRandomAmount']
+maxRandomAmount = loadedConfigJson['maxRandomAmount']
 i = 0
 os.system('color')
 loadedNumberJson = json.load(open("data.json"))
 loadedNumberListData = loadedNumberJson["data"]
-randomWhileAmount = random.randint(1, 25)
+randomWhileAmount = random.randint(minRandomAmount, maxRandomAmount)
 # Backup old data just in case
 with open("oldData.json", "w") as outfile:
     json.dump(loadedNumberJson, outfile, indent=4, sort_keys=True)
