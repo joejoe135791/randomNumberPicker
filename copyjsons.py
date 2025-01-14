@@ -11,7 +11,7 @@ os.system('color')
 
 cprint(f"Copying {dataJsonFile} to {compiledExeDest}", "light_green")
 try:
-    shutil.copy2(configJsonFile, compiledExeDest)
+    shutil.copy2(dataJsonFile, compiledExeDest)
 except FileExistsError:
     cprint(f"File already exists, skipping!", "light_red")
 except Exception as e:
