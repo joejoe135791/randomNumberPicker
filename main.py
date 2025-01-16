@@ -52,11 +52,12 @@ if currentSelectedMode == "default":
     messagebox.showinfo(f"Selected {selectedChoiceData}", f"Selected: {selectedChoiceData}.\npress ok to remove {selectedChoiceData} from list") 
     print(f"Selected {selectedChoiceData}")
 
-    removedNumberList = loadedNumberListData.remove(selectedChoiceData)
-    newJsonData = dict(data = removedNumberList)
+    loadedNumberListData.remove(selectedChoiceData)
+    newJsonData = dict(data = loadedNumberListData)
     with open("data.json", "w") as outfile:
-        json.dump(loadedNumberJson, outfile, indent=4, sort_keys=True)
+        json.dump(newJsonData, outfile, indent=4, sort_keys=True)
     print(f"{selectedChoiceData} has been removed from list")
+    exit()
 elif currentSelectedMode == "vs":
     while (i <= randomWhileAmount):
         i += 1
@@ -73,12 +74,13 @@ elif currentSelectedMode == "vs":
     messagebox.showinfo(f"{selectedChoiceData} VS {selectedChoiceData2}", f"{selectedChoiceData} VS {selectedChoiceData2}.\npress ok to remove names from list") 
     print(f"{selectedChoiceData} VS {selectedChoiceData2}")
 
-    removedNumberList = loadedNumberListData.remove(selectedChoiceData)
-    removedNumberList2 = loadedNumberListData.remove(selectedChoiceData2)
-    newJsonData = dict(data = removedNumberList2)
+    loadedNumberListData.remove(selectedChoiceData)
+    loadedNumberListData.remove(selectedChoiceData2)
+    newJsonData = dict(data = loadedNumberListData)
     with open("data.json", "w") as outfile:
-        json.dump(loadedNumberJson, outfile, indent=4, sort_keys=True)
+        json.dump(newJsonData, outfile, indent=4, sort_keys=True)
     print(f"{selectedChoiceData} and {selectedChoiceData2} have been removed from list")
+    exit()
 else:
     root = Tk()
     root.withdraw()
