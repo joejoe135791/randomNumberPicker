@@ -6,6 +6,18 @@ from tkinter import *
 from tkinter import messagebox 
 from termcolor import cprint
 
+if os.path.isfile(f"{os.getcwd()}/config.json") != True:
+    root = Tk()
+    root.wm_attributes("-topmost", 1)
+    root.withdraw()
+    messagebox.showerror("ERROR", "config.json not found!",parent=root) 
+    sys.exit("config.json not found!")
+if os.path.isfile(f"{os.getcwd()}/data.json") != True:
+    root = Tk()
+    root.wm_attributes("-topmost", 1)
+    root.withdraw()
+    messagebox.showerror("ERROR", "data.json not found!",parent=root) 
+    sys.exit("data.json not found!")
 loadedConfigJson = json.load(open("config.json"))
 debugKaraokeMode = loadedConfigJson['debugMode']
 versionNumber = loadedConfigJson['version']
