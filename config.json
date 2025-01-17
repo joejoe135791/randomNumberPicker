@@ -3,8 +3,8 @@
     "currentMode":"default",
     "minRandomAmount":1,
     "maxRandomAmount":25,
-    "celebrateWhenEmpty":true,
+    "celebrateWhenEmpty":false,
     "customCelebrationMessage":"Change Me",
     "showWelcomeMessage":true,
-    "debugMode":true
+    "debugMode":false
 }
