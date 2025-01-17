@@ -90,7 +90,7 @@ if currentSelectedMode == "default":
     with open("data.json", "w") as outfile:
         json.dump(newJsonData, outfile, indent=4, sort_keys=True)
     print(f"{selectedChoiceData} has been removed from list")
-    exit()
+    sys.exit("Program has finished running")
 elif currentSelectedMode == "vs":
     while (i < randomWhileAmount):
         i += 1
@@ -115,7 +115,7 @@ elif currentSelectedMode == "vs":
     with open("data.json", "w") as outfile:
         json.dump(newJsonData, outfile, indent=4, sort_keys=True)
     print(f"{selectedChoiceData} and {selectedChoiceData2} have been removed from list")
-    exit()
+    sys.exit("Program has finished running")
 else:
     root = Tk()
     root.wm_attributes("-topmost", 1)
