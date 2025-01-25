@@ -20,6 +20,7 @@ if os.path.isfile(f"{os.getcwd()}/data.json") != True:
     sys.exit("data.json not found!")
 loadedConfigJson = json.load(open("config.json"))
 debugKaraokeMode = loadedConfigJson['debugMode']
+removeFromList = loadedConfigJson['removeFromList']
 versionNumber = loadedConfigJson['version']
 minRandomAmount = loadedConfigJson['minRandomAmount']
 maxRandomAmount = loadedConfigJson['maxRandomAmount']
@@ -79,17 +80,17 @@ if currentSelectedMode == "default":
     root = Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()
-    messagebox.showinfo(f"Selected {selectedChoiceData}", f"Selected: {selectedChoiceData}.\npress ok to remove {selectedChoiceData} from list",parent=root) 
+    messagebox.showinfo(f"Selected {selectedChoiceData}", f"Selected: {selectedChoiceData}.\npress ok to close",parent=root) 
     root.destroy()
     print(f"Selected {selectedChoiceData}")
-
-    loadedNumberListData.remove(selectedChoiceData)
-    newJsonData = dict(data = loadedNumberListData)
-    if debugKaraokeMode == True:
-        cprint(f"New Json Data:\n{newJsonData}", "blue")
-    with open("data.json", "w") as outfile:
-        json.dump(newJsonData, outfile, indent=4, sort_keys=True)
-    print(f"{selectedChoiceData} has been removed from list")
+    if removeFromList == True:
+        loadedNumberListData.remove(selectedChoiceData)
+        newJsonData = dict(data = loadedNumberListData)
+        if debugKaraokeMode == True:
+            cprint(f"New Json Data:\n{newJsonData}", "blue")
+        with open("data.json", "w") as outfile:
+            json.dump(newJsonData, outfile, indent=4, sort_keys=True)
+        print(f"{selectedChoiceData} has been removed from list")
     sys.exit("Program has finished running")
 elif currentSelectedMode == "vs":
     while (i < randomWhileAmount):
@@ -104,17 +105,18 @@ elif currentSelectedMode == "vs":
     root = Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()
-    messagebox.showinfo(f"{selectedChoiceData} VS {selectedChoiceData2}", f"{selectedChoiceData} VS {selectedChoiceData2}.\nPress OK to remove names from list",parent=root) 
+    messagebox.showinfo(f"{selectedChoiceData} VS {selectedChoiceData2}", f"{selectedChoiceData} VS {selectedChoiceData2}.\nPress OK to close",parent=root) 
     print(f"{selectedChoiceData} VS {selectedChoiceData2}")
     root.destroy()
-    loadedNumberListData.remove(selectedChoiceData)
-    loadedNumberListData.remove(selectedChoiceData2)
-    newJsonData = dict(data = loadedNumberListData)
-    if debugKaraokeMode == True:
-        cprint(f"New Json Data:\n{newJsonData}", "blue")
-    with open("data.json", "w") as outfile:
-        json.dump(newJsonData, outfile, indent=4, sort_keys=True)
-    print(f"{selectedChoiceData} and {selectedChoiceData2} have been removed from list")
+    if removeFromList == True:
+        loadedNumberListData.remove(selectedChoiceData)
+        loadedNumberListData.remove(selectedChoiceData2)
+        newJsonData = dict(data = loadedNumberListData)
+        if debugKaraokeMode == True:
+            cprint(f"New Json Data:\n{newJsonData}", "blue")
+        with open("data.json", "w") as outfile:
+            json.dump(newJsonData, outfile, indent=4, sort_keys=True)
+        print(f"{selectedChoiceData} and {selectedChoiceData2} have been removed from list")
     sys.exit("Program has finished running")
 else:
     root = Tk()

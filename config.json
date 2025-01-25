@@ -1,6 +1,7 @@
 {
     "version":"V0.1.4",
     "currentMode":"default",
+    "removeFromList":true,
     "minRandomAmount":1,
     "maxRandomAmount":25,
     "celebrateWhenEmpty":false,
