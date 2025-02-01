@@ -4,3 +4,6 @@ numbers backup.json
 *.spec
 compiledexe/
 build/
+# Release directories
+randomDataPicker_v-*/
+randomDataPicker_v-*.zip
