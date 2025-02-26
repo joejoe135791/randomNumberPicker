@@ -8,9 +8,9 @@
     "customCelebrationMessage":"Change Me",
     "websocketOBSSettings":{
         "useOBSWebsocket":false,
-        "useWebsocketPassword":false,
         "hostOBS":"localhost",
         "portOBS":4455,
+        "useWebsocketPassword":false,
         "websocketPasswordOBS":"Change Me if you use a password for your websocket. Make sure to set 'useWebsocketPassword' to true",
         "timeoutOBS":5
     },

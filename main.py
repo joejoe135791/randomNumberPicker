@@ -2,6 +2,7 @@ import os
 import json
 import sys
 import random
+import obsws_python as obs
 from tkinter import *
 from tkinter import messagebox 
 from termcolor import cprint
@@ -29,6 +30,40 @@ showWelcomeMessage = loadedConfigJson['showWelcomeMessage']
 celebrateWhenEmpty = loadedConfigJson['celebrateWhenEmpty']
 customCelebrationMessage = loadedConfigJson['customCelebrationMessage']
 obsJsonConfig = loadedConfigJson['websocketOBSSettings']
+if obsJsonConfig['useOBSWebsocket'] == True:
+    useOBSWebsocket = True
+    websocketHostOBS = obsJsonConfig['hostOBS']
+    # OBS port check & assignment
+    if type(obsJsonConfig['portOBS']) != int:
+        root = Tk()
+        root.wm_attributes("-topmost", 1)
+        root.withdraw()
+        messagebox.showerror("ERROR", "OBS websocket port is not an integer",parent=root) 
+        sys.exit("OBS websocket port is not an integer")
+    else:
+        websocketPortOBS = obsJsonConfig['portOBS']
+    # OBS timeout check & assignment
+    if type(obsJsonConfig['timeoutOBS']) != int:
+        root = Tk()
+        root.wm_attributes("-topmost", 1)
+        root.withdraw()
+        messagebox.showerror("ERROR", "OBS timeout duration is not an integer",parent=root) 
+        sys.exit("OBS timeout duration is not an integer")
+    else:
+        websocketTimeoutObs = obsJsonConfig['timeoutOBS']
+    # Password check
+    if obsJsonConfig['useWebsocketPassword'] == True:
+        useWebsocketPassword = True
+        if obsJsonConfig['websocketPasswordOBS'] == "Change Me if you use a password for your websocket. Make sure to set 'useWebsocketPassword' to true":
+            root = Tk()
+            root.wm_attributes("-topmost", 1)
+            root.withdraw()
+            messagebox.showerror("ERROR", "OBS websocket password is enabled but password is default, change in config.json",parent=root) 
+            sys.exit("OBS websocket password is enabled but password is default, change in config.json")
+        else:
+            websocketPasswordOBS = obsJsonConfig['websocketPasswordOBS']
+    # Add connection stuff from library - https://pypi.org/project/obsws-python/
+
 i = 0
 os.system('color')
 loadedNumberJson = json.load(open("data.json"))
