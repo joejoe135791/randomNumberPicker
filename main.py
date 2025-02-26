@@ -28,6 +28,7 @@ currentSelectedMode = loadedConfigJson['currentMode'].casefold() # Set in config
 showWelcomeMessage = loadedConfigJson['showWelcomeMessage']
 celebrateWhenEmpty = loadedConfigJson['celebrateWhenEmpty']
 customCelebrationMessage = loadedConfigJson['customCelebrationMessage']
+obsJsonConfig = loadedConfigJson['websocketOBSSettings']
 i = 0
 os.system('color')
 loadedNumberJson = json.load(open("data.json"))

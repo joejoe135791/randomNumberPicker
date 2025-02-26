@@ -1,11 +1,19 @@
 {
-    "version":"V0.1.5",
+    "version":"V0.1.6",
     "currentMode":"default",
     "removeFromList":true,
     "minRandomAmount":1,
     "maxRandomAmount":25,
     "celebrateWhenEmpty":false,
     "customCelebrationMessage":"Change Me",
+    "websocketOBSSettings":{
+        "useOBSWebsocket":false,
+        "useWebsocketPassword":false,
+        "hostOBS":"localhost",
+        "portOBS":4455,
+        "websocketPasswordOBS":"Change Me if you use a password for your websocket. Make sure to set 'useWebsocketPassword' to true",
+        "timeoutOBS":5
+    },
     "showWelcomeMessage":true,
     "debugMode":false
 }
