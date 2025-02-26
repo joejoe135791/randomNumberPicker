@@ -50,7 +50,7 @@ if obsJsonConfig['useOBSWebsocket'] == True:
         messagebox.showerror("ERROR", "OBS timeout duration is not an integer",parent=root) 
         sys.exit("OBS timeout duration is not an integer")
     else:
-        websocketTimeoutObs = obsJsonConfig['timeoutOBS']
+        websocketTimeoutOBS = obsJsonConfig['timeoutOBS']
     # Password check
     if obsJsonConfig['useWebsocketPassword'] == True:
         useWebsocketPassword = True
@@ -62,7 +62,10 @@ if obsJsonConfig['useOBSWebsocket'] == True:
             sys.exit("OBS websocket password is enabled but password is default, change in config.json")
         else:
             websocketPasswordOBS = obsJsonConfig['websocketPasswordOBS']
-    # Add connection stuff from library - https://pypi.org/project/obsws-python/
+        clientOBS = obs.ReqClient(host=websocketHostOBS, port=websocketPortOBS, password=websocketPasswordOBS, timeout=websocketTimeoutOBS)
+    else:
+        # Add connection stuff from library - https://pypi.org/project/obsws-python
+        clientOBS = obs.ReqClient(host=websocketHostOBS, port=websocketPortOBS, timeout=websocketTimeoutOBS)
 
 i = 0
 os.system('color')
