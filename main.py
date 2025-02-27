@@ -33,6 +33,7 @@ obsJsonConfig = loadedConfigJson['websocketOBSSettings']
 if obsJsonConfig['useOBSWebsocket'] == True:
     useOBSWebsocket = True
     websocketHostOBS = obsJsonConfig['hostOBS']
+    textSourceNameOBS = obsJsonConfig['textSourceNameOBS']
     # OBS port check & assignment
     if type(obsJsonConfig['portOBS']) != int:
         root = Tk()
@@ -63,9 +64,13 @@ if obsJsonConfig['useOBSWebsocket'] == True:
         else:
             websocketPasswordOBS = obsJsonConfig['websocketPasswordOBS']
         clientOBS = obs.ReqClient(host=websocketHostOBS, port=websocketPortOBS, password=websocketPasswordOBS, timeout=websocketTimeoutOBS)
+        if debugKaraokeMode == True:
+            cprint(f"OBS Version: {clientOBS.get_version().obs_version}", "blue")
     else:
         # Add connection stuff from library - https://pypi.org/project/obsws-python
         clientOBS = obs.ReqClient(host=websocketHostOBS, port=websocketPortOBS, timeout=websocketTimeoutOBS)
+        if debugKaraokeMode == True:
+            cprint(f"OBS Version: {clientOBS.get_version().obs_version}", "blue")
 
 i = 0
 os.system('color')
@@ -115,7 +120,8 @@ if currentSelectedMode == "default":
         selectedChoiceData = random.choice(loadedNumberListData)
         if debugKaraokeMode == True:
             cprint(f"While loop has run {i}/{randomWhileAmount} times and has selected {selectedChoiceData}", "blue")
-
+    if useOBSWebsocket == True:
+        clientOBS.set_input_settings(textSourceNameOBS, {"text":selectedChoiceData}, overlay=True)
     root = Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()
@@ -140,7 +146,8 @@ elif currentSelectedMode == "vs":
             i -= 1
         if debugKaraokeMode == True:
             cprint(f"While loop has run {i}/{randomWhileAmount} times and has selected {selectedChoiceData} VS {selectedChoiceData2}", "blue")
-
+    if useOBSWebsocket == True:
+        clientOBS.set_input_settings(textSourceNameOBS, {"text":f"{selectedChoiceData} VS {selectedChoiceData2}"}, overlay=True)
     root = Tk()
     root.wm_attributes("-topmost", 1)
     root.withdraw()

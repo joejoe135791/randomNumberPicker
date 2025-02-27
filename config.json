@@ -8,6 +8,7 @@
     "customCelebrationMessage":"Change Me",
     "websocketOBSSettings":{
         "useOBSWebsocket":false,
+        "textSourceNameOBS":"CHANGE ME!",
         "hostOBS":"localhost",
         "portOBS":4455,
         "useWebsocketPassword":false,
