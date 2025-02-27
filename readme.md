@@ -5,7 +5,7 @@ This is a random number picker I developed specifically to give me a truly rando
 Simply change the data in the '[data.json](./data.json)' file and add your own numbers
 
 # Future plans
-- [ ] Integrate with OBS using text and webhooks
+- [X] Integrate with OBS using text and webhooks
 - [ ] Allow the automatically opening a URL after choosing a song
 - [ ] Create an easier, seperate program that appends data to the .json file for easier editing
 

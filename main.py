@@ -1,4 +1,5 @@
 import os
+import webbrowser
 import json
 import sys
 import random
@@ -7,6 +8,7 @@ from tkinter import *
 from tkinter import messagebox 
 from termcolor import cprint
 
+# json initialization
 if os.path.isfile(f"{os.getcwd()}/config.json") != True:
     root = Tk()
     root.wm_attributes("-topmost", 1)
@@ -20,15 +22,20 @@ if os.path.isfile(f"{os.getcwd()}/data.json") != True:
     messagebox.showerror("ERROR", "data.json not found!",parent=root) 
     sys.exit("data.json not found!")
 loadedConfigJson = json.load(open("config.json"))
-debugKaraokeMode = loadedConfigJson['debugMode']
-removeFromList = loadedConfigJson['removeFromList']
 versionNumber = loadedConfigJson['version']
+# debugging
+debugKaraokeMode = loadedConfigJson['debugMode']
+# config options
+removeFromList = loadedConfigJson['removeFromList']
 minRandomAmount = loadedConfigJson['minRandomAmount']
 maxRandomAmount = loadedConfigJson['maxRandomAmount']
 currentSelectedMode = loadedConfigJson['currentMode'].casefold() # Set in config.json. Types are default (picks 1) and vs (picks 2, meant for tournaments)
 showWelcomeMessage = loadedConfigJson['showWelcomeMessage']
+openLinkAfterSelection = loadedConfigJson['openLinkAfterSelection']
+# Celebration if the list is empty for challenges
 celebrateWhenEmpty = loadedConfigJson['celebrateWhenEmpty']
 customCelebrationMessage = loadedConfigJson['customCelebrationMessage']
+# OBS webhoom stuff
 obsJsonConfig = loadedConfigJson['websocketOBSSettings']
 if obsJsonConfig['useOBSWebsocket'] == True:
     useOBSWebsocket = True

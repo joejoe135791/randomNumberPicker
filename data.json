@@ -6,5 +6,11 @@
         "The Nights - Avicii",
         1,
         100
-    ]
+    ],
+    "Links":{
+        "Jonn Doe":null,
+        "Jane Doe":null,
+        "Never Gonna Give You Up - Rick Astley":"link",
+        "The Nights - Avicii":"link"
+    }
 }

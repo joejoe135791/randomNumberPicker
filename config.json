@@ -4,8 +4,7 @@
     "removeFromList":true,
     "minRandomAmount":1,
     "maxRandomAmount":25,
-    "celebrateWhenEmpty":false,
-    "customCelebrationMessage":"Change Me",
+    "openLinkAfterSelection":false,
     "websocketOBSSettings":{
         "useOBSWebsocket":false,
         "textSourceNameOBS":"CHANGE ME!",
@@ -15,6 +14,8 @@
         "websocketPasswordOBS":"Change Me if you use a password for your websocket. Make sure to set 'useWebsocketPassword' to true",
         "timeoutOBS":5
     },
+    "celebrateWhenEmpty":false,
+    "customCelebrationMessage":"Change Me",
     "showWelcomeMessage":true,
     "debugMode":false
 }
