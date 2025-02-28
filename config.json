@@ -1,10 +1,10 @@
 {
     "version":"V0.1.6",
     "currentMode":"default",
-    "removeFromList":true,
+    "removeFromList":false,
     "minRandomAmount":1,
     "maxRandomAmount":25,
-    "openLinkAfterSelection":false,
+    "openLinkAfterSelection":true,
     "websocketOBSSettings":{
         "useOBSWebsocket":false,
         "textSourceNameOBS":"CHANGE ME!",
@@ -16,6 +16,6 @@
     },
     "celebrateWhenEmpty":false,
     "customCelebrationMessage":"Change Me",
-    "showWelcomeMessage":true,
-    "debugMode":false
+    "showWelcomeMessage":false,
+    "debugMode":true
 }

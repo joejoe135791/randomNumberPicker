@@ -7,10 +7,12 @@
         1,
         100
     ],
-    "Links":{
+    "links":{
         "Jonn Doe":null,
         "Jane Doe":null,
-        "Never Gonna Give You Up - Rick Astley":"link",
-        "The Nights - Avicii":"link"
+        "Never Gonna Give You Up - Rick Astley":"https://youtu.be/8leAAwMIigI",
+        "The Nights - Avicii":"https://youtu.be/n_h8y2mzpns",
+        "1":"https://youtu.be/8leAAwMIigI",
+        "100":"https://youtu.be/n_h8y2mzpns"
     }
 }

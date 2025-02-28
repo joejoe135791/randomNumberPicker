@@ -35,7 +35,8 @@ openLinkAfterSelection = loadedConfigJson['openLinkAfterSelection']
 # Celebration if the list is empty for challenges
 celebrateWhenEmpty = loadedConfigJson['celebrateWhenEmpty']
 customCelebrationMessage = loadedConfigJson['customCelebrationMessage']
-# OBS webhoom stuff
+# OBS webhook stuff
+useOBSWebsocket = False # Setting this as default
 obsJsonConfig = loadedConfigJson['websocketOBSSettings']
 if obsJsonConfig['useOBSWebsocket'] == True:
     useOBSWebsocket = True
@@ -83,6 +84,7 @@ i = 0
 os.system('color')
 loadedNumberJson = json.load(open("data.json"))
 loadedNumberListData = loadedNumberJson["data"]
+loadedNumberListLinks = loadedNumberJson['links']
 randomWhileAmount = random.randint(minRandomAmount, maxRandomAmount)
 # Checking if data is not empty
 if not loadedNumberListData:
@@ -117,6 +119,8 @@ if debugKaraokeMode == True:
     cprint("Debugging enabled!", "light_yellow", attrs=['bold'])
     cprint(f"Amount to randomize: {randomWhileAmount}", "blue")
     cprint(f"loaded JSON Data\n{loadedNumberListData}", "blue")
+    if openLinkAfterSelection == True:
+        cprint(f"Open link after selection is enabled! link data:\n{loadedNumberListLinks}", "blue")
     cprint(f"Current Selected Mode: {currentSelectedMode}", "blue")
     input("Press any button to continue")
 else:
@@ -127,6 +131,9 @@ if currentSelectedMode == "default":
         selectedChoiceData = random.choice(loadedNumberListData)
         if debugKaraokeMode == True:
             cprint(f"While loop has run {i}/{randomWhileAmount} times and has selected {selectedChoiceData}", "blue")
+    if openLinkAfterSelection == True:
+        if loadedNumberListLinks[f"{selectedChoiceData}"] != None:
+            webbrowser.open_new_tab(loadedNumberListLinks[f"{selectedChoiceData}"])
     if useOBSWebsocket == True:
         clientOBS.set_input_settings(textSourceNameOBS, {"text":selectedChoiceData}, overlay=True)
     root = Tk()
@@ -137,7 +144,9 @@ if currentSelectedMode == "default":
     print(f"Selected {selectedChoiceData}")
     if removeFromList == True:
         loadedNumberListData.remove(selectedChoiceData)
-        newJsonData = dict(data = loadedNumberListData)
+        if openLinkAfterSelection == True:
+            del loadedNumberListLinks[f"{selectedChoiceData}"]
+        newJsonData = dict(data = loadedNumberListData, links = loadedNumberListLinks)
         if debugKaraokeMode == True:
             cprint(f"New Json Data:\n{newJsonData}", "blue")
         with open("data.json", "w") as outfile:
