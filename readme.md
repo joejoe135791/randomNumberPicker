@@ -2,7 +2,8 @@
 This is a random number picker I developed specifically to give me a truly random number from a list for my 100 day/100 song karaoke challenge (posting soon). feel free to use and fork however you like (with attribution)
 
 # Virustotal is showing false positives
-**[More info](#2)**
+**[More info](https://github.com/joejoe135791/randomNumberPicker/issues/2)**
+
 Since version 0.1.7, A lot of antiviruses on virustotal are marking the compiled binaries as viruses. These are false positives caused by the switch to a new python compiler, [Check out the virustotal results for version 0.1.7 here](https://www.virustotal.com/gui/file/10ac50465a5dc8811d631a341b35874fdc9918aa7cc2f2e6bfdc7337aa64d76e/detection)
 
 # How to use
