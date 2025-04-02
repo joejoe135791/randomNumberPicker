@@ -173,7 +173,7 @@ elif currentSelectedMode == "vs":
     if removeFromList == True:
         loadedNumberListData.remove(selectedChoiceData)
         loadedNumberListData.remove(selectedChoiceData2)
-        newJsonData = dict(data = loadedNumberListData)
+        newJsonData = dict(data = loadedNumberListData, links = loadedNumberListLinks)
         if debugKaraokeMode == True:
             cprint(f"New Json Data:\n{newJsonData}", "blue")
         with open("data.json", "w") as outfile:
