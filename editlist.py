@@ -4,8 +4,16 @@ import json
 import sys
 import random
 from tkinter import *
-from tkinter import messagebox 
+from tkinter import messagebox
 from termcolor import cprint
+
+# Defaults so nothing breaks
+returnedInfo = [0, "OK!"]
+clawInitCompleted = False
+hasSaved = False
+
+def exitScript(exitReason: str = "Unknown", exitScriptCode: int = -69):
+    sys.exit(f"Script Has exited with code {exitScriptCode}, '{exitReason}' ")
 
 def addDataToList(DataName):
     pass
@@ -15,6 +23,8 @@ def removeDataFromList(dataName):
 
 def homePage():
     while True:
+        if returnedInfo != [0, "OK!"]:
+            exitScript(returnedInfo[1], returnedInfo[0])
         cprint("Press 1 to add, remove, and/or edit data entries to the list")
         cprint("Press 2 to add, remove and/or edit links")
         cprint("Press 3 to edit the configuration file")
