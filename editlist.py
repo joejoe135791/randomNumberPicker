@@ -11,6 +11,7 @@ from termcolor import cprint
 returnedInfo = [0, "OK!"]
 clawInitCompleted = False
 hasSaved = False
+allJsonData = {}
 
 def exitScript(exitReason: str = "Unknown", exitScriptCode: int = -69):
     sys.exit(f"Script Has exited with code {exitScriptCode}, '{exitReason}' ")
@@ -23,6 +24,8 @@ def removeDataFromList(dataName):
 
 def homePage():
     while True:
+        global returnedInfo
+        os.system('cls')
         if returnedInfo != [0, "OK!"]:
             exitScript(returnedInfo[1], returnedInfo[0])
         cprint("Press 1 to add, remove, and/or edit data entries to the list")
@@ -32,10 +35,10 @@ def homePage():
         cprint("Press 0 to exit")
         selectedPage = input("Enter selection: ")
         if selectedPage == 1:
-            pass
+            returnedInfo = editDataPage()
             break
         elif selectedPage == 2:
-            pass
+            returnedInfo = editLinksPage()
             break
         elif selectedPage == 3:
             pass
@@ -57,12 +60,17 @@ def editConfigPage():
     pass
 
 def loadData():
-    pass
+    global allJsonData
 
 def saveData():
     pass
 
 def theClaw(): # This is similar to a watchdog process, it just causes the program to loop and a couple other housekeeping tasks
-    cprint('Initializing, please wait...')
-    loadData()
+    global clawInitCompleted
+    if clawInitCompleted == False:
+        cprint('Initializing, please wait...')
+        loadData()
+        clawInitCompleted = True
     homePage()
+
+theClaw()
